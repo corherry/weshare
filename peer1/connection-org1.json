@@ -1,0 +1,89 @@
+{
+    "name": "weshare-org1",
+    "version": "1.0.0",
+    "client": {
+        "organization": "Org1",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "Org1": {
+            "mspid": "Org1MSP",
+            "peers": [
+                "peer0.org1.weshare.com",
+                "peer1.org1.weshare.com"
+            ],
+            "certificateAuthorities": [
+                "ca.org1.weshare.com"
+            ]
+        }
+    },
+    "channels": {
+        "mychannel": {
+            "orderers": [
+                "orderer.weshare.com"
+            ],
+            "peers": {
+                "peer0.org1.weshare.com": {
+                    "endorsingPeer": "true",
+                    "chaincodeQuery": "true",
+                    "ledgerQuery": "true",
+                    "eventSource": "true"
+                },
+                "peer1.org1.weshare.com": {
+                    "endorsingPeer": "false",
+                    "chaincodeQuery": "true",
+                    "ledgerQuery": "true",
+                    "eventSource": "true"
+                }
+            }
+        }
+    },
+    "orderers": {
+        "orderer.weshare.com": {
+            "url": "grpc://localhost:7050",
+            "grpcOptions": {
+                "ssl-target-name-override": "orderer.weshare.com" 
+            }
+        }
+    },
+    "peers": {
+        "peer0.org1.weshare.com": {
+            "url": "grpcs://192.168.190.137:7051",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICVzCCAf6gAwIBAgIRAOFWvXsIimwtEgQ0nQfd1YkwCgYIKoZIzj0EAwIwdjEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGTAXBgNVBAoTEG9yZzEud2VzaGFyZS5jb20xHzAdBgNVBAMTFnRs\nc2NhLm9yZzEud2VzaGFyZS5jb20wHhcNMTkxMjIwMTEwOTAwWhcNMjkxMjE3MTEw\nOTAwWjB2MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE\nBxMNU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQb3JnMS53ZXNoYXJlLmNvbTEfMB0G\nA1UEAxMWdGxzY2Eub3JnMS53ZXNoYXJlLmNvbTBZMBMGByqGSM49AgEGCCqGSM49\nAwEHA0IABFuSgONv9fb3azdaUPugyehwMBi76Nac3ehDk1gE2O1T1sH+6Wk3NJLR\nfsoSjiUVj1PaMawkRibB7OWDIvihahWjbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNV\nHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNV\nHQ4EIgQg/hfyAmQXQ6Z2v5m09bjC2sScAW9w328d+k9CQM9+8awwCgYIKoZIzj0E\nAwIDRwAwRAIgarYJqEKV+SP9VkataQzs9YR1V1nWSC+I1KKJQf+5uCYCIGbU+5N/\nvTEPtTWr8esM/ID6TF5H2ma39f/CgePS8Vzc\n-----END CERTIFICATE-----\n"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.org1.weshare.com",
+                "hostnameOverride": "peer0.org1.weshare.com"
+            }
+        },
+        "peer1.org1.weshare.com": {
+            "url": "grpcs://192.168.190.138:8051",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICVzCCAf6gAwIBAgIRAOFWvXsIimwtEgQ0nQfd1YkwCgYIKoZIzj0EAwIwdjEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGTAXBgNVBAoTEG9yZzEud2VzaGFyZS5jb20xHzAdBgNVBAMTFnRs\nc2NhLm9yZzEud2VzaGFyZS5jb20wHhcNMTkxMjIwMTEwOTAwWhcNMjkxMjE3MTEw\nOTAwWjB2MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE\nBxMNU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQb3JnMS53ZXNoYXJlLmNvbTEfMB0G\nA1UEAxMWdGxzY2Eub3JnMS53ZXNoYXJlLmNvbTBZMBMGByqGSM49AgEGCCqGSM49\nAwEHA0IABFuSgONv9fb3azdaUPugyehwMBi76Nac3ehDk1gE2O1T1sH+6Wk3NJLR\nfsoSjiUVj1PaMawkRibB7OWDIvihahWjbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNV\nHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNV\nHQ4EIgQg/hfyAmQXQ6Z2v5m09bjC2sScAW9w328d+k9CQM9+8awwCgYIKoZIzj0E\nAwIDRwAwRAIgarYJqEKV+SP9VkataQzs9YR1V1nWSC+I1KKJQf+5uCYCIGbU+5N/\nvTEPtTWr8esM/ID6TF5H2ma39f/CgePS8Vzc\n-----END CERTIFICATE-----\n"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.org1.weshare.com",
+                "hostnameOverride": "peer1.org1.weshare.com"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca.org1.weshare.com": {
+            "url": "https://192.168.190.137:7054",
+            "caName": "ca-org1",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICUjCCAfigAwIBAgIRALeeAiSEBvs9VnDdTXe3ObgwCgYIKoZIzj0EAwIwczEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xGTAXBgNVBAoTEG9yZzEud2VzaGFyZS5jb20xHDAaBgNVBAMTE2Nh\nLm9yZzEud2VzaGFyZS5jb20wHhcNMTkxMjIwMTEwOTAwWhcNMjkxMjE3MTEwOTAw\nWjBzMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMN\nU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQb3JnMS53ZXNoYXJlLmNvbTEcMBoGA1UE\nAxMTY2Eub3JnMS53ZXNoYXJlLmNvbTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA\nBFxfBQXt+c3MY1KkIsGbXPVIYGjuucMN9fgkVdWdhHCcZ2AsqLV9bC1CfYewcch2\nW8oNmdF+gDNo8yihwJ3O8cKjbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAU\nBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQg\nFofMlQH9YdTQ6W6Kkjs7q5OsXpkg1zD7v0xvyLGfevYwCgYIKoZIzj0EAwIDSAAw\nRQIhAJrp11Q9dLaGWAVDH5MIIuWHOqQb91Bm3smGYK4MU/bgAiAU7wY/KW5Y97OZ\nCxk/FLvHcUolP7ndbQ/4bwy6geV0Dw==\n-----END CERTIFICATE-----\n"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

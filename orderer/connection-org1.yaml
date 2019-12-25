@@ -1,0 +1,108 @@
+---
+name: weshare-org1
+version: 1.0.0
+client:
+  organization: Org1
+  connection:
+    timeout:
+      peer:
+        endorser: '300'
+organizations:
+  Org1:
+    mspid: Org1MSP
+    peers:
+    - peer0.org1.weshare.com
+    - peer1.org1.weshare.com
+    certificateAuthorities:
+    - ca.org1.weshare.com
+channels:
+  mychannel:
+    orderers:
+      - orderer.weshare.com
+    peers:
+      peer0.org1.weshare.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+      peer1.org1.weshare.com:
+        endorsingPeer: false
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+orderers:
+  orderer.weshare.com:
+    url: grpc://localhost:7050
+    grpcOptions:
+      ssl-target-name-override: orderer.weshare.com
+peers:
+  peer0.org1.weshare.com:
+    url: grpcs://192.168.190.137:7051
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICWDCCAf6gAwIBAgIRAMR867a+nONUS/enJICo0w4wCgYIKoZIzj0EAwIwdjEL
+        MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+        cmFuY2lzY28xGTAXBgNVBAoTEG9yZzEud2VzaGFyZS5jb20xHzAdBgNVBAMTFnRs
+        c2NhLm9yZzEud2VzaGFyZS5jb20wHhcNMTkxMjI1MDkyMTAwWhcNMjkxMjIyMDky
+        MTAwWjB2MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE
+        BxMNU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQb3JnMS53ZXNoYXJlLmNvbTEfMB0G
+        A1UEAxMWdGxzY2Eub3JnMS53ZXNoYXJlLmNvbTBZMBMGByqGSM49AgEGCCqGSM49
+        AwEHA0IABAfe3W+gdc/06cJj0wi9ThDx/qWgSQY4m6bGGK9LQHXDieoGz2tF4yT2
+        PGrP06aqSkYSLwOXXMmMY545HCOaoXOjbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNV
+        HSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNV
+        HQ4EIgQgk8iugUJWROfEi/lSB7WoZxZ9JygBKieSPUo3D3R0chEwCgYIKoZIzj0E
+        AwIDSAAwRQIhAJ1QUeXOlU/d/MxJeIQx1BlWXMMaxGcJRSUazgSzUaguAiBYt+CT
+        JEc8Z1bpfOWpCZq2OClVj7L8uR13tn4B+WrASw==
+        -----END CERTIFICATE-----
+        
+    grpcOptions:
+      ssl-target-name-override: peer0.org1.weshare.com
+      hostnameOverride: peer0.org1.weshare.com
+  peer1.org1.weshare.com:
+    url: grpcs://192.168.190.138:8051
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICWDCCAf6gAwIBAgIRAMR867a+nONUS/enJICo0w4wCgYIKoZIzj0EAwIwdjEL
+        MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+        cmFuY2lzY28xGTAXBgNVBAoTEG9yZzEud2VzaGFyZS5jb20xHzAdBgNVBAMTFnRs
+        c2NhLm9yZzEud2VzaGFyZS5jb20wHhcNMTkxMjI1MDkyMTAwWhcNMjkxMjIyMDky
+        MTAwWjB2MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UE
+        BxMNU2FuIEZyYW5jaXNjbzEZMBcGA1UEChMQb3JnMS53ZXNoYXJlLmNvbTEfMB0G
+        A1UEAxMWdGxzY2Eub3JnMS53ZXNoYXJlLmNvbTBZMBMGByqGSM49AgEGCCqGSM49
+        AwEHA0IABAfe3W+gdc/06cJj0wi9ThDx/qWgSQY4m6bGGK9LQHXDieoGz2tF4yT2
+        PGrP06aqSkYSLwOXXMmMY545HCOaoXOjbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNV
+        HSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNV
+        HQ4EIgQgk8iugUJWROfEi/lSB7WoZxZ9JygBKieSPUo3D3R0chEwCgYIKoZIzj0E
+        AwIDSAAwRQIhAJ1QUeXOlU/d/MxJeIQx1BlWXMMaxGcJRSUazgSzUaguAiBYt+CT
+        JEc8Z1bpfOWpCZq2OClVj7L8uR13tn4B+WrASw==
+        -----END CERTIFICATE-----
+        
+    grpcOptions:
+      ssl-target-name-override: peer1.org1.weshare.com
+      hostnameOverride: peer1.org1.weshare.com
+certificateAuthorities:
+  ca.org1.weshare.com:
+    url: https://192.168.190.137:7054
+    caName: ca-org1
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICUDCCAfegAwIBAgIQDcR6jN0J3OE1e1DMRatzHjAKBggqhkjOPQQDAjBzMQsw
+        CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+        YW5jaXNjbzEZMBcGA1UEChMQb3JnMS53ZXNoYXJlLmNvbTEcMBoGA1UEAxMTY2Eu
+        b3JnMS53ZXNoYXJlLmNvbTAeFw0xOTEyMjUwOTIxMDBaFw0yOTEyMjIwOTIxMDBa
+        MHMxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1T
+        YW4gRnJhbmNpc2NvMRkwFwYDVQQKExBvcmcxLndlc2hhcmUuY29tMRwwGgYDVQQD
+        ExNjYS5vcmcxLndlc2hhcmUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE
+        xXlm6hqruhrYTILCPQuz4ULz4uCjA7fKipwmRw+BRUA/icMDXZxfaLBpHVlPUu6R
+        7d1VFehAYdpZU+IEzbI8WqNtMGswDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQG
+        CCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MCkGA1UdDgQiBCBP
+        Rl9jXBX/uzpJVshva68pvIkGEEN/IkgKK4ozKvjYCTAKBggqhkjOPQQDAgNHADBE
+        AiBG33+7dDUc05jp5wNTFEXNn+uHiqXF8Uk6YFqPRa1I9AIgCsAmVMrbL9FMyfJ3
+        Ud0W9d8SxAcMPCXW5M/OSaaLlfU=
+        -----END CERTIFICATE-----
+        
+    httpOptions:
+      verify: false

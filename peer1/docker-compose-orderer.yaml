@@ -1,0 +1,23 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+volumes:
+  orderer.weshare.com:
+
+networks:
+  byfn:
+
+services:
+
+  orderer.weshare.com:
+    extends:
+      file:   base/docker-compose-base.yaml
+      service: orderer.weshare.com
+    container_name: orderer.weshare.com
+    networks:
+      - byfn
+

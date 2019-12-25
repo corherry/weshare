@@ -1,0 +1,89 @@
+{
+    "name": "weshare-org${ORG}",
+    "version": "1.0.0",
+    "client": {
+        "organization": "Org${ORG}",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "Org${ORG}": {
+            "mspid": "Org${ORG}MSP",
+            "peers": [
+                "peer0.org${ORG}.weshare.com",
+                "peer1.org${ORG}.weshare.com"
+            ],
+            "certificateAuthorities": [
+                "ca.org${ORG}.weshare.com"
+            ]
+        }
+    },
+    "channels": {
+        "mychannel": {
+            "orderers": [
+                "orderer.weshare.com"
+            ],
+            "peers": {
+                "peer0.org${ORG}.weshare.com": {
+                    "endorsingPeer": "true",
+                    "chaincodeQuery": "true",
+                    "ledgerQuery": "true",
+                    "eventSource": "true"
+                },
+                "peer1.org${ORG}.weshare.com": {
+                    "endorsingPeer": "false",
+                    "chaincodeQuery": "true",
+                    "ledgerQuery": "true",
+                    "eventSource": "true"
+                }
+            }
+        }
+    },
+    "orderers": {
+        "orderer.weshare.com": {
+            "url": "grpc://localhost:7050",
+            "grpcOptions": {
+                "ssl-target-name-override": "orderer.weshare.com" 
+            }
+        }
+    },
+    "peers": {
+        "peer0.org${ORG}.weshare.com": {
+            "url": "grpcs://192.168.190.137:${P0PORT}",
+            "tlsCACerts": {
+                "pem": "${PEERPEM}"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.org${ORG}.weshare.com",
+                "hostnameOverride": "peer0.org${ORG}.weshare.com"
+            }
+        },
+        "peer1.org${ORG}.weshare.com": {
+            "url": "grpcs://192.168.190.138:${P1PORT}",
+            "tlsCACerts": {
+                "pem": "${PEERPEM}"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.org${ORG}.weshare.com",
+                "hostnameOverride": "peer1.org${ORG}.weshare.com"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca.org${ORG}.weshare.com": {
+            "url": "https://192.168.190.137:${CAPORT}",
+            "caName": "ca-org${ORG}",
+            "tlsCACerts": {
+                "pem": "${CAPEM}"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}
