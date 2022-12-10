@@ -17,8 +17,8 @@
     "dependencies": {
         "fabric-ca-client": "~1.4.0",
         "fabric-network": "~1.4.0",
-        "express": "~4.16.1",
-        "body-parser": "~1.19.0"
+        "express": "~4.18.2",
+        "body-parser": "~1.19.2"
     },
     "devDependencies": {
         "chai": "^4.2.0",
